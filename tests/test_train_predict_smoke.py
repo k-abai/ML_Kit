@@ -15,16 +15,16 @@ def test_train_predict_smoke(tmp_path: Path):
     preds_path = tmp_path / "preds.csv"
 
     run_train(
-        data_path=str(train_csv),
+        train_path=str(train_csv),
         target="target",
-        save_path=str(model_path),
+        out_path=str(model_path),
         task="auto",
         model_name="auto",
         seed=42,
     )
 
     run_predict(
-        data_path=str(predict_csv),
+        predict_path=str(predict_csv),
         model_path=str(model_path),
         out_path=str(preds_path),
         id_col=None,

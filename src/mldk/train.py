@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from typing import Dict
+
 import joblib
 
 from mldk.io import load_csv, split_X_y
@@ -10,15 +12,15 @@ from mldk.utils import ensure_parent_dir
 
 
 def run_train(
-    data_path: str,
+    train_path: str,
     target: str,
-    save_path: str,
+    out_path: str,
     task: str,
     model_name: str,
     seed: int,
-) -> None:
+) -> Dict[str, object]:
     """Train a model from CSV data and persist a joblib bundle."""
-    df = load_csv(data_path)
+    df = load_csv(train_path)
     X, y = split_X_y(df, target)
     inferred_task = infer_task(y, task)
     preprocessor = build_preprocessor(X)
@@ -33,6 +35,7 @@ def run_train(
         "model_name": resolved_model_name,
     }
 
-    out_file = ensure_parent_dir(save_path)
+    out_file = ensure_parent_dir(out_path)
     joblib.dump(bundle, out_file)
     print(f"[OK] Saved model to {out_file}")
+    return bundle
