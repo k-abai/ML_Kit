@@ -10,17 +10,17 @@ from mldk.utils import ensure_parent_dir
 
 
 def run_predict(
-    data_path: str,
+    predict_path: str,
     model_path: str,
     out_path: str,
-    id_col: str | None = None,
-) -> None:
+    id_col: str | None,
+) -> pd.DataFrame:
     """Run predictions using a saved model bundle and save to CSV."""
     bundle = joblib.load(model_path)
     pipeline = bundle["pipeline"]
     target = bundle.get("target")
 
-    df = load_csv(data_path)
+    df = load_csv(predict_path)
     if id_col and id_col not in df.columns:
         raise ValueError(f"ID column '{id_col}' not found in prediction data.")
 
@@ -34,3 +34,4 @@ def run_predict(
     out_file = ensure_parent_dir(out_path)
     output.to_csv(out_file, index=False)
     print(f"[OK] Saved predictions to {out_file}")
+    return output
