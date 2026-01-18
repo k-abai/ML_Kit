@@ -1,4 +1,4 @@
-"""Example plugin that uses the built-in sklearn workflow."""
+"""Example plugin that uses the built-in workflow."""
 
 from __future__ import annotations
 
@@ -15,7 +15,9 @@ def train(
     model: str,
     seed: int,
 ) -> str:
-    """Train using the built-in pipeline and return the model path."""
+    """
+    Train using the built-in pipeline and return the model path.
+    """
     run_train(
         data_path=train_csv,
         target=target,
@@ -34,7 +36,9 @@ def predict(
     id_col: str | None = None,
     target: str | None = None,
 ) -> None:
-    """Generate predictions using the built-in pipeline."""
+    """
+    Generate predictions using the built-in pipeline.
+    """
     run_predict(
         data_path=data_csv,
         model_path=model_path,
