@@ -13,7 +13,7 @@ The kits CLI is capabile of expanding current sklearn-compatible models and cont
 
 ## Set up
 1. Download and preprocess data (test and train)
-2. move csv into data folder
+2. Move csv into data folder
 
 3. Set up and activate virtual enviroment if none
 ```python
