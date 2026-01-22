@@ -26,11 +26,11 @@ python -m venv .venv
 source .venv/bin/activate
 ```
 
-4. install package 
+4. Install package 
 ```python
 pip install . 
 ```
-test CLI availabilty
+Test CLI availabilty
 ```python
 mldk --help 
 ```
